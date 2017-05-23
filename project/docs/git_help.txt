@@ -1,0 +1,38 @@
+--- Git Workflow ---
+https://www.atlassian.com/git/tutorials/using-branches/git-checkout
+https://www.atlassian.com/git/tutorials/merging-vs-rebasing
+
+Run these commands with Git Bash from the root folder of the repository
+
+When you're starting work on something new
+- git branch <name>
+- git checkout <name>
+- <make changes>
+<name> should identify what you're working on and be easy to type.
+
+To incorporate any changes to the Master branch (you should do this before each coding session)
+- git checkout master
+- git pull
+- git checkout <name>
+- git rebase master
+Note: Rebase will change your current branch to stem from the specified branch.
+	So, we update master first
+		Then checkout <name> so it's the current branch
+		Then the rebase command will change <name> to stem from master
+	Don'T checkout master, then rebase <name>
+
+When you're ready to commit changes to your branch (you should do this for major changes
+	or at the end of a coding session, but probably not for minor things)
+- git add <files being comitted>
+- git commit -m "<commit message here>"
+- git push
+
+When you're ready to add your new thing to Master; do this when youre thing is done,
+	don't do this with in-progress code
+- <Make sure all changes have been comitted to the branch first>
+- git checkout master
+- git merge <name>
+- git push
+
+If youre having permission problems, run
+- bash tools/permscript.sh
