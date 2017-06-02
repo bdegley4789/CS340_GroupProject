@@ -6,11 +6,22 @@
 </html>
 
 <?php
+include("static/php/_db_header.php");
 session_start();
 //if (session_start() == True){
 //	echo "Session was successfully started";
 //}
 
+function add_to_database() {
+	
+	$id = $db->real_escape_string($_SESSION['osuuid']);
+	$fn = $db->real_escape_string($_SESSION['firstname']);
+	$ln = $db->real_escape_string($_SESSION['lastname']);
+	$data = $db->query("SELECT ONID FROM Students WHERE Students.ONID = '$id'");
+	if($data->num_rows == 0) {
+		$db->query("INSERT INTO Students(firstName, lastName, ONID) VALUES('$fn', '$ln', '$id')");
+	}
+}
 
 function checkAuth($doRedirect) {
 	if (isset($_SESSION["onidid"]) && $_SESSION["onidid"] != "") return $_SESSION["onidid"];
@@ -44,6 +55,7 @@ function checkAuth($doRedirect) {
 			preg_match($pattern4, $html, $matches);
 			$_SESSION["osuuid"] = $matches[1];
 			$_SESSION["is_student"] = 1;
+			add_to_database();
 			return $onidid;
 		}
 	} else if ($doRedirect) {
@@ -52,35 +64,5 @@ function checkAuth($doRedirect) {
 	}
 	return "";
 }
-function getFirstName($doRedirect){
-  if (isset($_SESSION["firstname"]) && $_SESSION["firstname"] != "") return $_SESSION["firstname"];
-
-	 $pageURL = 'http';
-	 if (isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
-	 $pageURL .= "://";
-	 if ($_SERVER["SERVER_PORT"] != "80") {
-	  $pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["SCRIPT_NAME"];
-	 } else {
-	  $pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["SCRIPT_NAME"];
-	 }
-
-	$ticket = isset($_REQUEST["ticket"]) ? $_REQUEST["ticket"] : "";
-	if ($ticket != "") {
-		$url = "https://login.oregonstate.edu/cas/serviceValidate?ticket=".$ticket."&service=".$pageURL;
-		$html = file_get_contents($url);
-		$pattern = '/\\<cas\\:firstname\\>([a-zA-Z0-9]+)\\<\\/cas\\:firstname\\>/';
-		echo $html;
-		preg_match($pattern, $html, $matches);
-		if ($matches && count($matches) > 1) {
-			$firstname = $matches[1];
-      $_SESSION["firstname"] = $firstname;
-			return $firstname;
-		}
-	} else if ($doRedirect) {
-		$url = "https://login.oregonstate.edu/cas/login?service=".$pageURL;
-		echo "<script>location.replace('" . $url . "');</script>";
-	}
-	return "";
-}
-
+include("static/php/_db_footer.php");
 ?>
