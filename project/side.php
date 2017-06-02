@@ -7,8 +7,8 @@
       <li><a href="account.php">Account</a></li>
       <li><a href="logout.php">Log Out</a></li>
 
-      <li><a href="add_assignment.php">Add Assignment</a></li>
-      <li><a href="add_class.php">Add Class</a></li>
+      <!--<li><a href="add_assignment.php">Add Assignment</a></li>-->
+      <!--<li><a href="add_class.php">Add Class</a></li>-->
       <li><a href="enroll.php">Enroll Class</a></li>
       <li><a href="add_group.php">Add Group</a></li>
       <li><a href="add_message.php">Create Message</a></li>
