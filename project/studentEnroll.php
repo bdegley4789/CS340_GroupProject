@@ -9,7 +9,7 @@ include("side.php");
 $mysqli = new mysqli("classmysql.engr.oregonstate.edu","cs340_alessanf","vhwfz4pPVJe4rssw","cs340_alessanf");
   if ($stmt = $mysqli->prepare("insert into TakingClass(ONID,CourseID) values(?,?)")) {
 
-			$ONID = $_SESSION["osuuid"];
+			$ONID = $_SESSION["onidid"];
       $CourseID = $_REQUEST["CourseID"];
 
 
