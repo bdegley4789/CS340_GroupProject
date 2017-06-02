@@ -2,6 +2,7 @@
 <?php
 include("header.php");
 include("side.php");
+include("static/php/_db_header.php");
 ?>
 <!--<?php
 	//if (isset($_SESSION['loggedin'])/*checkAuth(true) != FALSE*/) {
@@ -27,4 +28,6 @@ if (checkAuth(true)){
 if (isset($_SESSION['loggedin'])) { ?>
 <h1>Login Successful</h1>
 <?php } ?>
-<?php include("footer.php");?>
+
+<?php include("footer.php");
+include("static/php/_db_footer.php");?>
