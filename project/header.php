@@ -43,6 +43,7 @@ function checkAuth($doRedirect) {
 			$_SESSION["lastname"] = $matches[1];
 			preg_match($pattern4, $html, $matches);
 			$_SESSION["osuuid"] = $matches[1];
+			$_SESSION["is_student"] = 1;
 			return $onidid;
 		}
 	} else if ($doRedirect) {
