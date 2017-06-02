@@ -14,9 +14,10 @@ include("side.php");
 if (checkAuth(true)){
 	?>
 	<h1>Your Account:</h1>
-<?php echo "<p>ONID User Name: ".htmlspecialchars(checkAuth(false))."</p>"; ?>
-<?php echo "<p>First Name: ".htmlspecialchars(getFirstName(false))."</p>"; ?>
-
+<?php echo "<p>ONID User Name: ".$_SESSION['onidid']."</p>"; ?>
+<?php echo "<p>First Name: ".$_SESSION['firstname']."</p>"; ?>
+<?php echo "<p>Last Name: ".$_SESSION['lastname']."</p>"; ?>
+<?php echo "<p>ID: ".htmlspecialchars($_SESSION['osuuid'])."</p>"; ?>
 
 <?php
 }

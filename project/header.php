@@ -30,10 +30,19 @@ function checkAuth($doRedirect) {
 		$url = "https://login.oregonstate.edu/cas/serviceValidate?ticket=".$ticket."&service=".$pageURL;
 		$html = file_get_contents($url);
 		$pattern = '/\\<cas\\:user\\>([a-zA-Z0-9]+)\\<\\/cas\\:user\\>/';
+		$pattern2 = '/\\<cas\\:firstname\\>([a-zA-Z0-9]+)\\<\\/cas\\:firstname\\>/';
+		$pattern3 = '/\\<cas\\:lastname\\>([a-zA-Z0-9]+)\\<\\/cas\\:lastname\\>/';
+		$pattern4 = '/\\<cas\\:osuuid\\>([a-zA-Z0-9]+)\\<\\/cas\\:osuuid\\>/';
 		preg_match($pattern, $html, $matches);
 		if ($matches && count($matches) > 1) {
 			$onidid = $matches[1];
 			$_SESSION["onidid"] = $onidid;
+			preg_match($pattern2, $html, $matches);
+			$_SESSION["firstname"] = $matches[1];
+			preg_match($pattern3, $html, $matches);
+			$_SESSION["lastname"] = $matches[1];
+			preg_match($pattern4, $html, $matches);
+			$_SESSION["osuuid"] = $matches[1];
 			return $onidid;
 		}
 	} else if ($doRedirect) {
@@ -55,11 +64,11 @@ function getFirstName($doRedirect){
 	 }
 
 	$ticket = isset($_REQUEST["ticket"]) ? $_REQUEST["ticket"] : "";
-
 	if ($ticket != "") {
 		$url = "https://login.oregonstate.edu/cas/serviceValidate?ticket=".$ticket."&service=".$pageURL;
 		$html = file_get_contents($url);
 		$pattern = '/\\<cas\\:firstname\\>([a-zA-Z0-9]+)\\<\\/cas\\:firstname\\>/';
+		echo $html;
 		preg_match($pattern, $html, $matches);
 		if ($matches && count($matches) > 1) {
 			$firstname = $matches[1];
