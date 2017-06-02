@@ -13,13 +13,16 @@ session_start();
 //}
 
 function add_to_database() {
-	
-	$id = $db->real_escape_string($_SESSION['osuuid']);
-	$fn = $db->real_escape_string($_SESSION['firstname']);
-	$ln = $db->real_escape_string($_SESSION['lastname']);
+	$id = $_SESSION['onidid'];
+	$fn = $db->escape_string($_SESSION['firstname']);
+	$ln = $db->escape_string($_SESSION['lastname']);
 	$data = $db->query("SELECT ONID FROM Students WHERE Students.ONID = '$id'");
 	if($data->num_rows == 0) {
-		$db->query("INSERT INTO Students(firstName, lastName, ONID) VALUES('$fn', '$ln', '$id')");
+		echo "hello world!";
+		$result = $db->query("INSERT INTO Students(firstName, lastName, ONID) VALUES('$fn', '$ln', '$id')");
+		if(!$result) {
+			echo $db->error;
+		}
 	}
 }
 
@@ -43,7 +46,6 @@ function checkAuth($doRedirect) {
 		$pattern = '/\\<cas\\:user\\>([a-zA-Z0-9]+)\\<\\/cas\\:user\\>/';
 		$pattern2 = '/\\<cas\\:firstname\\>([a-zA-Z0-9]+)\\<\\/cas\\:firstname\\>/';
 		$pattern3 = '/\\<cas\\:lastname\\>([a-zA-Z0-9]+)\\<\\/cas\\:lastname\\>/';
-		$pattern4 = '/\\<cas\\:osuuid\\>([a-zA-Z0-9]+)\\<\\/cas\\:osuuid\\>/';
 		preg_match($pattern, $html, $matches);
 		if ($matches && count($matches) > 1) {
 			$onidid = $matches[1];
@@ -52,8 +54,6 @@ function checkAuth($doRedirect) {
 			$_SESSION["firstname"] = $matches[1];
 			preg_match($pattern3, $html, $matches);
 			$_SESSION["lastname"] = $matches[1];
-			preg_match($pattern4, $html, $matches);
-			$_SESSION["osuuid"] = $matches[1];
 			$_SESSION["is_student"] = 1;
 			add_to_database();
 			return $onidid;

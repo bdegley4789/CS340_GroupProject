@@ -22,19 +22,6 @@ if (checkAuth(true)){
 <?php echo "<p>ID: ".htmlspecialchars($_SESSION['osuuid'])."</p>"; ?>
 
 <?php
-	$id = htmlspecialchars($_SESSION['osuuid']);
-	$fn = $db->escape_string($_SESSION['firstname']);
-	$ln = $db->escape_string($_SESSION['lastname']);
-	$data = $db->query("SELECT ONID FROM Students WHERE Students.ONID = '$id'");
-	if($data->num_rows == 0) {
-		echo "hello world!";
-		if(!$db->query("INSERT INTO Students(firstName, lastName, ONID) VALUES('$fn', '$ln', '$id')")) {
-			echo "$db->error";
-			echo $db->error;
-		}
-	}
-?>
-<?php
 }
 
 
