@@ -18,7 +18,6 @@ function add_to_database() {
 	$ln = $db->escape_string($_SESSION['lastname']);
 	$data = $db->query("SELECT ONID FROM Students WHERE Students.ONID = '$id'");
 	if($data->num_rows == 0) {
-		echo "hello world!";
 		$result = $db->query("INSERT INTO Students(firstName, lastName, ONID) VALUES('$fn', '$ln', '$id')");
 		if(!$result) {
 			echo $db->error;
