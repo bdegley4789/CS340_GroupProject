@@ -21,8 +21,8 @@ if ($result = $mysqli->query("SELECT G.Name,G.GroupID,G.size,C.subject FROM `Cla
             echo "<td>".htmlspecialchars($obj->GroupID)."</td>";
             echo "<td>".htmlspecialchars($obj->size)."</td>";
 						echo "<td>".htmlspecialchars($obj->subject)."</td>";
-						echo "<td><form action='index.php'>";
-						echo "<name = 'classid' value = ".htmlspecialchars($obj->GroupID).">";
+						echo "<td><form action='groupRecieve.php'>";
+						echo "<input type='hidden' name = 'GroupID' value = ".htmlspecialchars($obj->GroupID).">";
 						echo "<input type='submit' value='Submit'>";
 						echo "</form></td>";
 		}

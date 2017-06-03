@@ -15,7 +15,8 @@ include("side.php");
 $mysqli = new mysqli("classmysql.engr.oregonstate.edu","cs340_alessanf","vhwfz4pPVJe4rssw","cs340_alessanf");
 echo "<table class='Group'><tr><th> Group Name  <th> Group Number <th> Size <th> Course </tr>";
 //$stid = $_SESSION["osuuid"];
-if ($result = $mysqli->query("SELECT G.Name,G.GroupID,G.size,C.subject FROM `Class`C, `Group`G WHERE C.CourseID = G.CourseID")) {
+
+if ($result = $mysqli->query("SELECT G.Name, G.GroupID, G.size, C.subject FROM `Group`G,`Class`C,`GroupMember`M WHERE C.CourseID = G.CourseID AND M.GroupID = G.GroupID AND M.ONID='".$_SESSION['onidid']."'")) {
 		while($obj = $result->fetch_object()){
             echo "<tr>";
             echo "<td>".htmlspecialchars($obj->Name)."</td>";
