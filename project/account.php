@@ -20,20 +20,6 @@ if (checkAuth(true)){
 <?php echo "<p>First Name: ".$_SESSION['firstname']."</p>"; ?>
 <?php echo "<p>Last Name: ".$_SESSION['lastname']."</p>"; ?>
 
-<?php 
-	$id = $_SESSION['onidid'];
-	$fn = $db->escape_string($_SESSION['firstname']);
-	$ln = $db->escape_string($_SESSION['lastname']);
-	$data = $db->query("SELECT ONID FROM Students WHERE Students.ONID = '$id'");
-	if($data->num_rows == 0) {
-		echo "Successfully added to database.";
-		$result = $db->query("INSERT INTO Students(firstName, lastName, ONID) VALUES('$fn', '$ln', '$id')");
-		if(!$result) {
-			echo $db->error;
-		}
-	}
-?>
-
 <?php
 }
 
