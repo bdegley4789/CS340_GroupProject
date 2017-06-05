@@ -29,6 +29,22 @@ nav ul {
 nav ul a {
     text-decoration: none;
 }
+li a {
+    display: block;
+    color: black;
+    padding: 8px 0 8px 16px;
+    text-decoration: none;
+}
+
+li a.active {
+    background-color: #4CAF50;
+    color: orange;
+}
+
+li a:hover:not(.active) {
+    background-color: #555;
+    color: orange;
+}
 
 head {
     margin-left: 200px;

@@ -27,6 +27,6 @@ if($mysqli->connect_errno) {
   }
 ?>
 
-<h3>View results...<li><a href="class.php">Your Classes</a></li></h3>
+<h3>View results...<a href="class.php">Your Classes</a></h3>
 
 <?php include("footer.php");?>
