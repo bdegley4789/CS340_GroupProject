@@ -15,8 +15,8 @@ if($mysqli->connect_errno) {
 			$ONID = $_SESSION["onidid"];
       $CourseID = $mysqli->real_escape_string($_REQUEST["CourseID"]);
 
-      echo "$ONID";
-      echo "$CourseID";
+      //echo "$ONID";
+      //echo "$CourseID";
 
       $stmt->bind_param("ss", $ONID,$CourseID);
       $stmt->execute();

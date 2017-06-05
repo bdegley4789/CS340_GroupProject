@@ -1,16 +1,30 @@
 <html>
   <link rel="stylesheet" type="text/css" href="style.css" />
   <header>
-     <h1>CS340 Group Project by Bryce Egley, Alessandro Lim, Haoxiang Yang</h1>
+     <h1>Group Finder</h1>
+     <h3>CS340 Group Project by Bryce Egley, Alessandro Lim, Haoxiang Yang</h3>
   </header>
 </html>
 
 <?php
+include("static/php/_db_header.php");
 session_start();
 //if (session_start() == True){
 //	echo "Session was successfully started";
 //}
 
+function add_to_database() {
+	$id = $_SESSION['onidid'];
+	$fn = $db->escape_string($_SESSION['firstname']);
+	$ln = $db->escape_string($_SESSION['lastname']);
+	$data = $db->query("SELECT ONID FROM Students WHERE Students.ONID = '$id'");
+	if($data->num_rows == 0) {
+		$result = $db->query("INSERT INTO Students(firstName, lastName, ONID) VALUES('$fn', '$ln', '$id')");
+		if(!$result) {
+			echo $db->error;
+		}
+	}
+}
 
 function checkAuth($doRedirect) {
 	if (isset($_SESSION["onidid"]) && $_SESSION["onidid"] != "") return $_SESSION["onidid"];
@@ -38,24 +52,10 @@ function checkAuth($doRedirect) {
 			$_SESSION["onidid"] = $onidid;
 			preg_match($pattern2, $html, $matches);
 			$_SESSION["firstname"] = $matches[1];
-			$fn = $matches[1];
 			preg_match($pattern3, $html, $matches);
 			$_SESSION["lastname"] = $matches[1];
-			$ln = $matches[1];
 			$_SESSION["is_student"] = 1;
-			$db_host = "classmysql.engr.oregonstate.edu";
-			$db_user = "cs340_alessanf";
-			$db_pw = "vhwfz4pPVJe4rssw";
-			$db_name = "cs340_alessanf";
-			$db = new mysqli($db_host, $db_user, $db_pw, $db_name);
-			$data = $db->query("SELECT ONID FROM Students WHERE Students.ONID = '$onidid'");
-			if($data->num_rows == 0) {
-				$result = $db->query("INSERT INTO Students(firstName, lastName, ONID) VALUES('$fn', '$ln', '$onidid')");
-				if(!$result) {
-					echo $db->error;
-				}
-			}
-			$db->close($db);
+			add_to_database();
 			return $onidid;
 		}
 	} else if ($doRedirect) {
@@ -64,4 +64,5 @@ function checkAuth($doRedirect) {
 	}
 	return "";
 }
+include("static/php/_db_footer.php");
 ?>

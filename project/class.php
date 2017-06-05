@@ -18,7 +18,7 @@ echo "<table class='Name'><tr><th> Name  <th> Time <th> Location</tr>";
 if ($result = $mysqli->query("SELECT C.subject,C.time,C.location FROM `Class`C, `TakingClass`T, `Students`S WHERE T.CourseID = C.CourseID AND S.ONID = T.ONID AND S.ONID='".$_SESSION['onidid']."'")) {
 		while($obj = $result->fetch_object()){
             echo "<tr>";
-            echo "<td>".htmlspecialchars($obj->subject)."</td>";
+            echo "<td>"."<a href=\"./display.php?subject=$obj->subject\">$obj->subject</a>"."</td>";
             echo "<td>".htmlspecialchars($obj->time)."</td>";
             echo "<td>".htmlspecialchars($obj->location)."</td>";
 						echo "</tr>";

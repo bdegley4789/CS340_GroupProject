@@ -15,8 +15,8 @@ if($mysqli->connect_errno) {
 			$ONID = $_SESSION["onidid"];
       $GroupID = $mysqli->real_escape_string($_REQUEST["GroupID"]);
 
-      echo "$ONID";
-      echo "$GroupID";
+      //echo "$ONID";
+      //echo "$GroupID";
 
       $stmt->bind_param("ss", $ONID,$GroupID);
       $stmt->execute();
