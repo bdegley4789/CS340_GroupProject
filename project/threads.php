@@ -21,8 +21,8 @@ if ($result = $mysqli->query("SELECT S.ONID,T.Title,T.GroupID,T.TopicID FROM `Th
             echo "<td>".htmlspecialchars($obj->ONID)."</td>";
             echo "<td>".htmlspecialchars($obj->Title)."</td>";
 			echo "<td>".htmlspecialchars($obj->GroupID)."</td>";
-			echo "<td><form action='messages.php'>";
-			echo "<input type='hidden' name = 'CourseID' value = ".htmlspecialchars($obj->TopicID).">";
+			echo "<td><form action='messages.php' method='post'>";
+			echo "<input type='hidden' name = 'TopicID' value = ".htmlspecialchars($obj->TopicID).">";
 			echo "<input type='submit' value='Go'>";
 			echo "</form></td>";
             echo "</tr>";

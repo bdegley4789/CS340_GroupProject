@@ -20,7 +20,7 @@ if ($result = $mysqli->query("select CourseID,subject,time,location from Class")
             echo "<td>".htmlspecialchars($obj->subject)."</td>";
             echo "<td>".htmlspecialchars($obj->time)."</td>";
             echo "<td>".htmlspecialchars($obj->location)."</td>";
-						echo "<td><form action='studentEnroll.php'>";
+						echo "<td><form action='studentEnroll.php' method='post'>";
 						echo "<input type='hidden' name = 'CourseID' value = ".htmlspecialchars($obj->CourseID).">";
 						echo "<input type='submit' value='Submit'>";
 						echo "</form></td>";
