@@ -23,7 +23,7 @@ if ($result = $mysqli->query("SELECT S.ONID,T.Title,T.GroupID,T.TopicID FROM `Th
 			echo "<td>".htmlspecialchars($obj->GroupID)."</td>";
 			echo "<td><form action='messages.php' method='post'>";
 			echo "<input type='hidden' name = 'TopicID' value = ".htmlspecialchars($obj->TopicID).">";
-			echo "<input type='submit' value='Go'>";
+			echo "<input type='submit' value='View'>";
 			echo "</form></td>";
             echo "</tr>";
     }

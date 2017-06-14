@@ -16,7 +16,7 @@ include("side.php");
   </head>
 </html>
 <html>
-<h2>Threads from course:
+<h2>Group from course:
 <?php
 	$mysqli = new mysqli("classmysql.engr.oregonstate.edu","cs340_alessanf","vhwfz4pPVJe4rssw","cs340_alessanf");
 	$name = $mysqli->query("SELECT C.subject FROM `Group`G,`Class`C WHERE G.Name = '".$_GET["Name"]."' AND G.CourseID = C.CourseID")->fetch_row()[0];

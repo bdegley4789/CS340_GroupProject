@@ -27,6 +27,10 @@ if($mysqli->connect_errno) {
   }
 ?>
 
-<h3>View results...<a href="class.php">Your Classes</a></h3>
-
+<h3>Redirecting or view results...<a href="class.php">Your Classes</a></h3>
+<script>
+setTimeout(function() {
+	Document.location = "class.php";
+},2000);
+</script>
 <?php include("footer.php");?>

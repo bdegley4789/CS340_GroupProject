@@ -11,6 +11,8 @@ include("side.php");
     <h1>Current Courses</h1>
   </head>
 </html>
+<body>
+</div>
 <?php
 $mysqli = new mysqli("classmysql.engr.oregonstate.edu","cs340_alessanf","vhwfz4pPVJe4rssw","cs340_alessanf");
 echo "<table class='Name'><tr><th> Name  <th> Time <th> Location</tr>";
@@ -26,6 +28,8 @@ if ($result = $mysqli->query("SELECT C.subject,C.time,C.location FROM `Class`C, 
 echo "</table>";
 }
 ?>
+</div>
+</body>
 <?php
 include("footer.php");
 ?>
