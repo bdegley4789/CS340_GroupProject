@@ -43,7 +43,7 @@ echo "<table class='Assignment'><tr><th> Name  <th> Size <th>  GroupID </tr>";
 if ($result = $mysqli->query("SELECT Name,size,GroupID FROM `Group`G,`Class`C WHERE G.CourseID = C.CourseID AND C.subject = '".$_GET["subject"]."'")) {
     while($obj = $result->fetch_object()){
             echo "<tr>";
-						echo "<td>"."<a href=\"./displayGroup.php?Name=$obj->Name\">$obj->Name</a>"."</td>";
+						echo "<td>"."<a href=\"./displayGroup.php?Name=$obj->GroupID\">$obj->Name</a>"."</td>";
             echo "<td>".htmlspecialchars($obj->size)."</td>";
             echo "<td>".htmlspecialchars($obj->GroupID)."</td>";
             echo "</tr>";
