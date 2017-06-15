@@ -5,8 +5,6 @@
       <li><a href="homepage.php">Home</a></li>
       <li><a href="login.php">Log In</a></li>
       <li><a href="account.php">Account</a></li>
-      <li><a href="logout.php">Log Out</a></li>
-
       <!--<li><a href="add_assignment.php">Add Assignment</a></li>-->
       <!--<li><a href="add_class.php">Add Class</a></li>-->
       <li><a href="enroll.php">Enroll Class</a></li>
@@ -18,6 +16,7 @@
       <li><a href="group.php">Groups</a></li>
       <li><a href="messages.php">Messages</a></li>
       <li><a href="threads.php">Threads</a></li>
+	  <li><a href="logout.php">Log Out</a></li>
     </ul>
   </nav>
 </html>
