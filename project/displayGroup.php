@@ -66,12 +66,13 @@ if ($result = $mysqli->query("SELECT S.ONID, firstName,lastName FROM `Students`S
 			}
     }
 	if($ingroup == 0) {
-		echo "<td><form action='joingroup.php' method='post'>";
+		echo "<td><form action='groupRecieve.php' method='post'>";
+		echo "<input type='hidden' name = 'GroupID' value = ".htmlspecialchars($GroupID).">";
 		echo "<input type='submit' value='Join group'>";
 	}
 	else {
 		echo "<td><form action='leavegroup.php' method='post'>";
-		echo "<input type='submit' value='Leave group'>";	
+		echo "<input type='submit' value='Leave group'>";
 	}
     $result->close();
 }
