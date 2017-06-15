@@ -15,7 +15,7 @@ include("side.php");
       <ul>
 <?php
 	echo "<label>Instructor:</label>";
-	echo "<select id='ONID'>";
+	echo "<select name='ONID'>";
 	$mysqli = new mysqli("classmysql.engr.oregonstate.edu","cs340_alessanf","vhwfz4pPVJe4rssw","cs340_alessanf");
 	if ($result = $mysqli->query("SELECT ONID, firstName, lastName FROM Instructors WHERE 1")) {
 		while($obj = $result->fetch_object()) {
@@ -26,7 +26,7 @@ include("side.php");
 	echo "<br>";
 	$mysqli->close();
 ?>
-        <label>Subject:</label> <input type="text" name="Subject" required><br>
+        <label>Subject:</label> <input type="text" name="subject" required><br>
         <label>location:</label> <input type="text" name="location" required><br>
         <input type=submit><br>
       </ul>

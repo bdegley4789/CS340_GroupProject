@@ -11,9 +11,12 @@ $mysqli = new mysqli("classmysql.engr.oregonstate.edu","cs340_alessanf","vhwfz4p
       $ONID = $_REQUEST["ONID"];
       $subject = $_REQUEST["subject"];
       $location = $_REQUEST["location"];
+      echo $ONID;
+      echo $subject;
+      echo $location ;
 
       /* for five params, pass five character types to bind_param with five values */
-      $stmt->bind_param("issts", $CourseID, $ONID, $subject, $time, $location);
+      $stmt->bind_param("iss", $ONID, $subject, $location);
       $stmt->execute();
 
     $stmt->close();
@@ -22,6 +25,6 @@ $mysqli = new mysqli("classmysql.engr.oregonstate.edu","cs340_alessanf","vhwfz4p
   }
 ?>
 
-<h3>View results...<li><a href="class.php">Classes</a></li></h3>
+<h3>View results...<a href="enroll.php">Courses</a></h3>
 
 <?php include("footer.php");?>
