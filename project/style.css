@@ -52,3 +52,7 @@ head {
     padding: 2em;
     overflow: hidden;
 }
+
+div.inputmessage {
+	bottom:0;
+}

@@ -13,8 +13,6 @@
       <li><a href="add_group.php">Join Group</a></li>
       <li><a href="Create_Class.php">Create Class</a></li>
       <li><a href="Create_Group.php">Create Group</a></li>
-      <li><a href="add_message.php">Create Message</a></li>
-      <li><a href="add_thread.php">Create Thread</a></li>
       <li><a href="assignment.php">Assignments</a></li>
       <li><a href="class.php">Classes</a></li>
       <li><a href="group.php">Groups</a></li>

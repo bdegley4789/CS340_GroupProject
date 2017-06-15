@@ -5,16 +5,17 @@ include("side.php");
 <?php
 	checkAuth(true)
 ?>
-<h1>New Message</h1>
+<?php
+$mysqli = new mysqli("classmysql.engr.oregonstate.edu","cs340_alessanf","vhwfz4pPVJe4rssw","cs340_alessanf");
+$TopicID = $mysqli->real_escape_string($_POST["TopicID"]);
+$message = $mysqli->real_escape_string($_POST["message"]);
+$ONID = $mysqli->real_escape_string($_SESSION["onidid"]);
 
-<form method="post" action='index.php' class="inform">
-<ul>
-	<label>Message:</label>
-	<textarea rows="4" cols="50" required>
-	</textarea>
-	<input type=submit>
-</ul>
-</form>
+$mysqli->query("INSERT INTO `Messages`(`TopicID`, `ONID`, `Message`, `Time`) VALUES ($TopicID,$message,$ONID,NOW())");
+
+?>
+Echo Redirecting back to message:
+
 <?php
 include("footer.php");
 ?>
