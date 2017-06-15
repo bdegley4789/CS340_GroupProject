@@ -28,12 +28,11 @@ include("side.php");
 </html>
 <?php
 $mysqli = new mysqli("classmysql.engr.oregonstate.edu","cs340_alessanf","vhwfz4pPVJe4rssw","cs340_alessanf");
-echo "<table class='Thress'><tr><th> First Name  <th> Last Name <th>  Title <th> Messages </tr>";
+echo "<table class='Thress'><tr><th> Poster <th>  Title <th> Messages </tr>";
 if ($result = $mysqli->query("SELECT S.firstName,S.lastName,T.Title,T.TopicID FROM `Threads`T,`Students`S,`Group`G WHERE S.ONID = T.ONID AND G.GroupID = T.GroupID AND G.Name = '".$_GET["Name"]."'")) {
     while($obj = $result->fetch_object()){
             echo "<tr>";
-            echo "<td>".htmlspecialchars($obj->firstName)."</td>";
-            echo "<td>".htmlspecialchars($obj->lastName)."</td>";
+            echo "<td>".htmlspecialchars($obj->firstName)." ".htmlspecialchars($obj->lastName)."</td>";
             echo "<td>".htmlspecialchars($obj->Title)."</td>";
 						echo "<td><form action='messages.php' method='post'>";
 						echo "<input type='hidden' name = 'TopicID' value = ".htmlspecialchars($obj->TopicID).">";
@@ -67,12 +66,17 @@ if ($result = $mysqli->query("SELECT S.ONID, firstName,lastName FROM `Students`S
     }
 	if($ingroup == 0) {
 		echo "<td><form action='groupRecieve.php' method='post'>";
-		echo "<input type='hidden' name = 'GroupID' value = ".htmlspecialchars($GroupID).">";
+		echo "<input type='hidden' name = 'GroupID' value = ".htmlspecialchars($_REQUEST['GroupID']).">";
 		echo "<input type='submit' value='Join group'>";
 	}
 	else {
 		echo "<td><form action='leavegroup.php' method='post'>";
-		echo "<input type='submit' value='Leave group'>";
+		echo "<input type='hidden' name = 'GroupID' value = ".htmlspecialchars($_REQUEST['GroupID']).">";
+		echo "<input type='hidden' name = 'Name' value = ".htmlspecialchars($_REQUEST['Name']).">";
+		echo "<input type='submit' value='Leave group'><br>";
+		echo "<td><form action='add_thread.php' method='post'>";
+		echo "<input type='hidden' name = 'GroupID' value = ".htmlspecialchars($_REQUEST['GroupID']).">";
+		echo "<input type='submit' value='Create new thread'>";
 	}
     $result->close();
 }
