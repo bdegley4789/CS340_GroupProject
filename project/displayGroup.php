@@ -5,6 +5,7 @@ include("side.php");
 <?php
 	checkAuth(true)
 ?>
+<div>
 <html>
   <link rel="stylesheet" type="text/css" href="style.css" />
   <head>
@@ -16,6 +17,7 @@ include("side.php");
   </head>
 </html>
 <html>
+<div>
 <h2>Group from course:
 <?php
 	$mysqli = new mysqli("classmysql.engr.oregonstate.edu","cs340_alessanf","vhwfz4pPVJe4rssw","cs340_alessanf");
@@ -44,24 +46,39 @@ if ($result = $mysqli->query("SELECT S.firstName,S.lastName,T.Title,T.TopicID FR
 }
 echo "</table>";
 ?>
+</div>
+<div>
 <html>
 	<h2>Group Members</h2>
 </html>
 <?php
+$ingroup = 0;
 $mysqli = new mysqli("classmysql.engr.oregonstate.edu","cs340_alessanf","vhwfz4pPVJe4rssw","cs340_alessanf");
 echo "<table class='Students'><tr><th> First Name  <th> Last Name </tr>";
-if ($result = $mysqli->query("SELECT firstName,lastName FROM `Students`S,`GroupMember`M,`Group`G WHERE G.Name = '".$_GET["Name"]."' AND G.GroupID = M.GroupID AND M.ONID = S.ONID")) {
+if ($result = $mysqli->query("SELECT S.ONID, firstName,lastName FROM `Students`S,`GroupMember`M,`Group`G WHERE G.Name = '".$_GET["Name"]."' AND G.GroupID = M.GroupID AND M.ONID = S.ONID")) {
     while($obj = $result->fetch_object()){
             echo "<tr>";
             echo "<td>".htmlspecialchars($obj->firstName)."</td>";
             echo "<td>".htmlspecialchars($obj->lastName)."</td>";
             echo "</tr>";
+			if($obj->ONID == $_SESSION['onidid']) {
+				$ingroup = 1;
+			}
     }
-
+	if($ingroup == 0) {
+		echo "<td><form action='joingroup.php' method='post'>";
+		echo "<input type='submit' value='Join group'>";
+	}
+	else {
+		echo "<td><form action='leavegroup.php' method='post'>";
+		echo "<input type='submit' value='Leave group'>";	
+	}
     $result->close();
 }
 echo "</table>";
 ?>
+</div>
+</div>
 <?php
 include("footer.php");
 ?>
