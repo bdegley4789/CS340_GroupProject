@@ -29,6 +29,7 @@ if ($result = $mysqli->query("SELECT S.ONID,T.Title,T.GroupID,T.TopicID FROM `Th
     }
 
     $result->close();
+$mysqli->close();
 }
 echo "</table>";
 echo "</div>";
