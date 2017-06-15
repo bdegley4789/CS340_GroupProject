@@ -3,29 +3,20 @@ include("header.php");
 include("side.php");
 ?>
 <html>
-    <h3>Saving submission...</h3>
+    <h3>Leaving Group...</h3>
 </html>
 <?php
-  $mysqli = new mysqli("classmysql.engr.oregonstate.edu","cs340_egleyb","oAvEBgaAcd1mbLOk","cs340_egleyb");
-  if ($stmt = $mysqli->prepare("insert into user_data(user,first,last,email,pass,age) values(?,?,?,?,?,?)")) {
+	$mysqli = new mysqli("classmysql.engr.oregonstate.edu","cs340_alessanf","vhwfz4pPVJe4rssw","cs340_alessanf");
+	$ONID = $mysqli->real_escape_string($_SESSION["onidid"]);
+	$GroupID = $mysqli->real_escape_string($_REQUEST['GroupID']);
+	#echo $ONID;
+	#echo $GroupID;
+	$mysqli->query("DELETE FROM `GroupMember` WHERE ONID='".$ONID."' AND GroupID='".$GroupID."'");
+	
+	echo "<html>";
+	echo "<a href=\"displayGroup.php?Name=".$_REQUEST['Name']."&GroupID=".$_REQUEST['GroupID']."\">Click here to return</a>";
+	echo "</html>";
 
-      $user = $_REQUEST["user"];
-      $first = $_REQUEST["first"];
-      $last = $_REQUEST["last"];
-      $email = $_REQUEST["email"];
-      $pass = $_REQUEST["pass"];
-      $age = $_REQUEST["age"];
-
-      /* for five params, pass five character types to bind_param with five values */
-      $stmt->bind_param("sssssi", $user, $first, $last, $email, $pass, $age);
-      $stmt->execute();
-
-    $stmt->close();
-  } else {
-    printf("Error: %s\n", $mysqli->error);
-  }
 ?>
-
-<h3>View results...<li><a href="http://web.engr.oregonstate.edu/~egleyb/cs340/HW1/List_Users.php">List Users</a></li></h3>
 
 <?php include("footer.php");?>
