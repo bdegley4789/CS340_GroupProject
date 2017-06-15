@@ -26,13 +26,17 @@ include("side.php");
 </html>
 <?php
 $mysqli = new mysqli("classmysql.engr.oregonstate.edu","cs340_alessanf","vhwfz4pPVJe4rssw","cs340_alessanf");
-echo "<table class='Thress'><tr><th> First Name  <th> Last Name <th>  Title </tr>";
-if ($result = $mysqli->query("SELECT S.firstName,S.lastName,T.Title FROM `Threads`T,`Students`S,`Group`G WHERE S.ONID = T.ONID AND G.GroupID = T.GroupID AND G.Name = '".$_GET["Name"]."'")) {
+echo "<table class='Thress'><tr><th> First Name  <th> Last Name <th>  Title <th> Messages </tr>";
+if ($result = $mysqli->query("SELECT S.firstName,S.lastName,T.Title,T.TopicID FROM `Threads`T,`Students`S,`Group`G WHERE S.ONID = T.ONID AND G.GroupID = T.GroupID AND G.Name = '".$_GET["Name"]."'")) {
     while($obj = $result->fetch_object()){
             echo "<tr>";
             echo "<td>".htmlspecialchars($obj->firstName)."</td>";
             echo "<td>".htmlspecialchars($obj->lastName)."</td>";
             echo "<td>".htmlspecialchars($obj->Title)."</td>";
+						echo "<td><form action='messages.php' method='post'>";
+						echo "<input type='hidden' name = 'TopicID' value = ".htmlspecialchars($obj->TopicID).">";
+						echo "<input type='submit' value='View'>";
+						echo "</form></td>";
             echo "</tr>";
     }
 
