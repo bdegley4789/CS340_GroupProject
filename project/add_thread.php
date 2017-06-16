@@ -5,16 +5,26 @@ include("side.php");
 <?php
 	checkAuth(true)
 ?>
-<h1>New Thread</h1>
+<html>
+	<head>
+		<h1>Create a new thread </h1>
+	</head>
+	
+	
+<?php
+	echo "<form action='threadReceive.php' method='post'>";
+	echo "<input type='hidden' name='GroupID' value='".$_REQUEST["GroupID"]."'>";
+	echo "<label>Thread Name:</label><input type='text' name='threadname' required><br>";
+	echo "<label>Message:</label>";
+	echo "<textarea name='message' rows='4' cols='50' required></textarea><br>";
+	echo "<input type='submit' value='Create thread'>";
 
-<form method="post" action='index.php' class="inform">
-<ul>
-	<label>Title:</label>
-	<textarea rows="4" cols="50" required>
-	</textarea>
-	<input type=submit>
-</ul>
-</form>
+
+
+
+
+?>
+</html>
 <?php
 include("footer.php");
 ?>

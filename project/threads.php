@@ -15,7 +15,7 @@ include("side.php");
 echo "<div>";
 $mysqli = new mysqli("classmysql.engr.oregonstate.edu","cs340_alessanf","vhwfz4pPVJe4rssw","cs340_alessanf");
 echo "<table class='Threads'><tr><th> Poster <th> Thread Title <th> Group <th> Messages</tr>";
-if ($result = $mysqli->query("SELECT ONID, Title, GroupID FROM `Threads` WHERE `Threads`.`GroupID` in(SELECT `GroupMember`.`GroupID` FROM `GroupMember`, `Students` WHERE `Students`.`ONID`='".$_SESSION['onidid']."' AND `GroupMember`.`ONID`=`Students`.`ONID`)")) {
+if ($result = $mysqli->query("SELECT ONID, Title, GroupID, TopicID FROM `Threads` WHERE `Threads`.`GroupID` in(SELECT `GroupMember`.`GroupID` FROM `GroupMember`, `Students` WHERE `Students`.`ONID`='".$_SESSION['onidid']."' AND `GroupMember`.`ONID`=`Students`.`ONID`)")) {
     while($obj = $result->fetch_object()){
             echo "<tr>";
             echo "<td>".htmlspecialchars($obj->ONID)."</td>";

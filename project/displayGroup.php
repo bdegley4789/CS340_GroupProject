@@ -64,23 +64,24 @@ if ($result = $mysqli->query("SELECT S.ONID, firstName,lastName FROM `Students`S
 				$ingroup = 1;
 			}
     }
+	echo "</table>";
 	if($ingroup == 0) {
-		echo "<td><form action='groupRecieve.php' method='post'>";
+		echo "<form action='groupRecieve.php' method='post'>";
 		echo "<input type='hidden' name = 'GroupID' value = ".htmlspecialchars($_REQUEST['GroupID']).">";
 		echo "<input type='submit' value='Join group'>";
 	}
 	else {
-		echo "<td><form action='leavegroup.php' method='post'>";
+		echo "<form action='leavegroup.php' method='post'>";
 		echo "<input type='hidden' name = 'GroupID' value = ".htmlspecialchars($_REQUEST['GroupID']).">";
 		echo "<input type='hidden' name = 'Name' value = ".htmlspecialchars($_REQUEST['Name']).">";
-		echo "<input type='submit' value='Leave group'><br>";
-		echo "<td><form action='add_thread.php' method='post'>";
+		echo "<input type='submit' value='Leave group'></form><br>";
+		echo "<form action='add_thread.php' method='post'>";
 		echo "<input type='hidden' name = 'GroupID' value = ".htmlspecialchars($_REQUEST['GroupID']).">";
-		echo "<input type='submit' value='Create new thread'>";
+		echo "<input type='submit' value='Create a new thread'></form>";
 	}
     $result->close();
 }
-echo "</table>";
+
 ?>
 </div>
 </div>

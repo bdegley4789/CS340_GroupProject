@@ -32,7 +32,7 @@ echo "<form method='post' action='add_message.php' class='inform'>";
 echo "<input type='hidden' name = 'TopicID' value = ".htmlspecialchars($TopicID).">";
 echo "<textarea name='message' rows='4' cols='50' required>";
 echo "</textarea>";
-echo "<input type=submit>";
+echo "<input type=submit></form>";
 echo "</div>";
 ?>
 </div>
