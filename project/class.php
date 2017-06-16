@@ -22,6 +22,9 @@ if ($result = $mysqli->query("SELECT C.CourseID, C.subject,C.location FROM `Clas
             echo "<tr>";
             echo "<td>"."<a href=\"./display.php?subject=$obj->subject&CourseID=$obj->CourseID\">$obj->subject</a>"."</td>";
             echo "<td>".htmlspecialchars($obj->location)."</td>";
+						echo "<td><form action='leaveclass.php' method='post'>";
+						echo "<input type='hidden' name = 'CourseID' value = ".htmlspecialchars($obj->CourseID).">";
+						echo "<input type='submit' value='Leave Class'></form></td>";
 						echo "</tr>";
 		}
 echo "</table>";
