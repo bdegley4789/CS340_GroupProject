@@ -13,9 +13,6 @@ $mysqli = new mysqli("classmysql.engr.oregonstate.edu","cs340_alessanf","vhwfz4p
       $ONID = $_REQUEST["ONID"];
       $subject = $_REQUEST["subject"];
       $location = $_REQUEST["location"];
-      echo $ONID;
-      echo $subject;
-      echo $location ;
 
       /* for five params, pass five character types to bind_param with five values */
       $stmt->bind_param("iss", $ONID, $subject, $location);
@@ -27,7 +24,14 @@ $mysqli = new mysqli("classmysql.engr.oregonstate.edu","cs340_alessanf","vhwfz4p
   }
 ?>
 
-<h3>View results...<a href="enroll.php">Courses</a></h3>
+<h3>View results...<a id='redir' href="enroll.php">Courses</a></h3>
 </div>
 </html>
+
+<script>
+setTimeout(function() {
+	document.getElementById("redir").click();
+},250);
+</script>
+>>>>>>> origin/master
 <?php include("footer.php");?>

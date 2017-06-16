@@ -29,7 +29,15 @@ if($mysqli->connect_errno) {
   }
 ?>
 
-<h3>View results...<a href="group.php">Your Groups</a></h3>
+<h3>View results...<a id='redir' href="group.php">Your Groups</a></h3>
 </div>
 </html>
+
+
+<script>
+setTimeout(function() {
+	document.getElementById("redir").click();
+},250);
+</script>
+>>>>>>> origin/master
 <?php include("footer.php");?>
