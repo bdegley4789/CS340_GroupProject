@@ -13,7 +13,7 @@ include("side.php");
 	<header class='main'>
     <h1>Create Class</h1>
 	<header>
-	<div main='class>
+	<div main='class'>
     <form method="post" action='Class_recieve.php' class="inform">
       <ul>
 <?php
