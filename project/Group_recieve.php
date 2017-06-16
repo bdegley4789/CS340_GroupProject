@@ -13,11 +13,6 @@ $mysqli = new mysqli("classmysql.engr.oregonstate.edu","cs340_alessanf","vhwfz4p
       $ONID = $_SESSION["onidid"];
       $Name = $_REQUEST["Name"];
 
-      echo $size;
-      echo $CourseID;
-      echo $ONID;
-      echo $Name;
-
       /* for five params, pass five character types to bind_param with five values */
       $stmt->bind_param("iiss", $size, $CourseID, $ONID, $Name);
       $stmt->execute();
