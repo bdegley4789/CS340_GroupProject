@@ -3,7 +3,10 @@
   <nav>
     <ul>
       <li><a href="homepage.php">Home</a></li>
-      <li><a href="login.php">Log In</a></li>
+<?php if (!(isset($_SESSION["onidid"]) && $_SESSION["onidid"] != "")) {
+      echo "<li><a href=\"login.php\">Log In</a></li>";
+}
+?>
       <li><a href="account.php">Account</a></li>
       <!--<li><a href="add_assignment.php">Add Assignment</a></li>-->
       <!--<li><a href="add_class.php">Add Class</a></li>-->
@@ -16,7 +19,10 @@
       <li><a href="group.php">Your Groups</a></li>
       <!--<li><a href="messages.php">Messages</a></li>-->
       <li><a href="threads.php">Threads</a></li>
-	  <li><a href="logout.php">Log Out</a></li>
+<?php if (isset($_SESSION["onidid"]) && $_SESSION["onidid"] != "") {
+	echo "<li><a href=\"logout.php\">Log Out</a></li>";
+}
+?>
     </ul>
   </nav>
 </html>
