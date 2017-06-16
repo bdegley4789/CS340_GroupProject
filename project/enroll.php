@@ -11,7 +11,7 @@ include("side.php");
   <title>Enroll</title>
   </head>
   <header class='main'>
-    <h1>Current Courses</h1>
+    <h1>All Courses</h1>
   </header>
 <div class='main'>
 <?php

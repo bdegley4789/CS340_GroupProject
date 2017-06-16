@@ -8,10 +8,10 @@ include("side.php");
 <html>
   <link rel="stylesheet" type="text/css" href="style.css">
   <head>
-    <Title>Current Courses</Title>
+    <Title>Join Groups</Title>
   </head>
   <header class='main'>
-	<h1>Current Courses</h1>
+	<h1>Join Groups</h1>
   </header>
   <script src="add_group.js"></script>
 <div class='main'>
