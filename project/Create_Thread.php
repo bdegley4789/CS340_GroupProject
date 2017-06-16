@@ -7,9 +7,13 @@ include("side.php");
 ?>
 <html>
 	<head>
-		<h1>Create a new thread </h1>
+	<link rel="stylesheet" type="text/css" href="style.css">
+    <title>Create thread</title>
 	</head>
-
+	<header class='main'>
+		<h1>Create a new thread </h1>
+	</header>
+<div class='main'>
 
 <?php
 	echo "<form action='threadReceive.php' method='post'>";
@@ -23,7 +27,8 @@ include("side.php");
 
 
 
-
+?>
+</div>
 </html>
 <?php
 include("footer.php");

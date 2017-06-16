@@ -10,6 +10,12 @@ include("static/php/_db_header.php");
 ?>
 <h1>Not logged in</h1>
 -->
+<html>
+<head>
+	<title>Account</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<div class='main'>
 <?php
 
 
@@ -29,7 +35,7 @@ if (checkAuth(true)){
 if (isset($_SESSION['loggedin'])) { ?>
 <h1>Login Successful</h1>
 <?php } ?>
-
-
+</div>
+<html>
 <?php include("static/php/_db_footer.php"); ?>
 <?php include("footer.php");?>

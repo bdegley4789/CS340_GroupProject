@@ -1,5 +1,5 @@
 <html>
-  <link rel="stylesheet" type="text/css" href="style.css"/>
+  <link rel="stylesheet" type="text/css" href="style.css">
   <nav>
     <ul>
       <li><a href="homepage.php">Home</a></li>

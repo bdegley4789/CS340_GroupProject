@@ -6,11 +6,14 @@ include("side.php");
 	checkAuth(true)
 ?>
 <html>
-  <link rel="stylesheet" type="text/css" href="style.css" />
   <head>
+	<link rel="stylesheet" type="text/css" href="style.css">
     <title>Create Class</title>
+	</head>
+	<header class='main'>
     <h1>Create Class</h1>
-
+	<header>
+	<div main='class>
     <form method="post" action='Class_recieve.php' class="inform">
       <ul>
 <?php
@@ -32,7 +35,7 @@ include("side.php");
       </ul>
     </form>
 
-  </head>
+  </div>
 </html>
 <?php
 include("footer.php");

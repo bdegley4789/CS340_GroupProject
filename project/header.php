@@ -1,6 +1,6 @@
 <html>
-  <link rel="stylesheet" type="text/css" href="style.css" />
-  <header>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <header class='header'>
      <h1>Group Finder</h1>
      <h3>CS340 Group Project by Bryce Egley, Alessandro Lim, Haoxiang Yang</h3>
   </header>

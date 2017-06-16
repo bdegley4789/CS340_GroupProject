@@ -5,7 +5,11 @@ include("side.php");
 <?php
 	checkAuth(true)
 ?>
+<html>
+<link rel="stylesheet" type="text/css" href="style.css">
+<header class='main'>
 Redirecting back to message:
+</header>
 <?php
 $mysqli = new mysqli("classmysql.engr.oregonstate.edu","cs340_alessanf","vhwfz4pPVJe4rssw","cs340_alessanf");
 $TopicID = $mysqli->real_escape_string($_POST["TopicID"]);
@@ -23,6 +27,7 @@ setTimeout(function() {
 	document.getElementById("redir").click();
 },250);
 </script>
+</html>
 <?php
 include("footer.php");
 ?>

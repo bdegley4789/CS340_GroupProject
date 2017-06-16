@@ -1,4 +1,4 @@
-*{
+* {
 	font-family: Arial;
 }
 div.container {
@@ -6,7 +6,7 @@ div.container {
     border: 1px solid gray;
 }
 
-header,footer {
+header.header,footer {
     padding: 1em;
     color: white;
     background-color: black;
@@ -14,6 +14,13 @@ header,footer {
     text-align: center;
 }
 
+header.main {
+	margin-left:13%;
+}
+div.main {
+	margin-left:14%;
+	
+}
 nav {
     float: left;
     width: 12%;

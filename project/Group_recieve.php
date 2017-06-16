@@ -3,8 +3,10 @@ include("header.php");
 include("side.php");
 ?>
 <html>
+<link rel="stylesheet" type="text/css" href="style.css">
+	<div class='main'>
     <h3>Saving submission...</h3>
-</html>
+
 <?php
 $mysqli = new mysqli("classmysql.engr.oregonstate.edu","cs340_alessanf","vhwfz4pPVJe4rssw","cs340_alessanf");
   if ($stmt = $mysqli->prepare("INSERT INTO `Group`(size,CourseID,ONID,Name) VALUES(?,?,?,?)")) {
@@ -24,5 +26,6 @@ $mysqli = new mysqli("classmysql.engr.oregonstate.edu","cs340_alessanf","vhwfz4p
 ?>
 
 <h3>View results...<a href=group.php>Groups</a></h3>
-
+</div>
+</html>
 <?php include("footer.php");?>

@@ -3,8 +3,11 @@ include("header.php");
 include("side.php");
 ?>
 <html>
+<div class='main'>
+<link rel="stylesheet" type="text/css" href="style.css">
+	
     <h3>Leaving Group...</h3>
-</html>
+
 <?php
 	$mysqli = new mysqli("classmysql.engr.oregonstate.edu","cs340_alessanf","vhwfz4pPVJe4rssw","cs340_alessanf");
 	$ONID = $mysqli->real_escape_string($_SESSION["onidid"]);
@@ -18,5 +21,6 @@ include("side.php");
 	echo "</html>";
 
 ?>
-
+</div>
+</html>
 <?php include("footer.php");?>

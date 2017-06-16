@@ -3,8 +3,9 @@ include("header.php");
 include("side.php");
 ?>
 <html>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<div class='main'>
     <h3>Saving submission...</h3>
-</html>
 <?php
 $mysqli = new mysqli("classmysql.engr.oregonstate.edu","cs340_alessanf","vhwfz4pPVJe4rssw","cs340_alessanf");
 if($mysqli->connect_errno) {
@@ -33,4 +34,6 @@ setTimeout(function() {
 	window.location.replace("class.php");
 },1500);
 </script>
+</div>
+</html>
 <?php include("footer.php");?>

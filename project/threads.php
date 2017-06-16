@@ -6,11 +6,13 @@ include("side.php");
 	checkAuth(true)
 ?>
 <html>
-  <link rel="stylesheet" type="text/css" href="style.css" />
-  <head>
+	<head>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>Threads</title>
+  <header class='main'>
     <h1>Threads</h1>
-  </head>
-</html>
+  </header>
+<div class='main'>
 <?php
 echo "<div>";
 $mysqli = new mysqli("classmysql.engr.oregonstate.edu","cs340_alessanf","vhwfz4pPVJe4rssw","cs340_alessanf");
@@ -34,6 +36,8 @@ $mysqli->close();
 echo "</table>";
 echo "</div>";
 ?>
+</div>
+</html>
 <?php
 include("footer.php");
 ?>

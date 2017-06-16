@@ -6,10 +6,14 @@ include("side.php");
 	checkAuth(true)
 ?>
 <html>
-  <link rel="stylesheet" type="text/css" href="style.css" />
   <head>
+  <link rel="stylesheet" type="text/css" href="style.css">
     <title>Create Group</title>
+	</head>
+	<header class='main'>
     <h1>Create Group</h1>
+	</header>
+	<div class='main'>
     <form method="post" action='Group_recieve.php' class="inform">
       <ul>
 				<input type="hidden" name="CourseID" value= <?php echo htmlspecialchars($_GET["CourseID"]); ?>required><br>
@@ -18,7 +22,7 @@ include("side.php");
         <input type=submit><br>
       </ul>
     </form>
-  </head>
+  </div>
 </html>
 <?php
 include("footer.php");
