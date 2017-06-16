@@ -32,6 +32,11 @@ if ($result = $mysqli->query("SELECT Name,Description,DueDate FROM `Assignment`A
     $result->close();
 }
 echo "</table>";
+echo "<td><form action='add_assignment.php' method='get'>";
+echo "<input type='hidden' name = 'CourseID' value = ".htmlspecialchars($_GET['CourseID']).">";
+echo "<input type='hidden' name = 'subject' value = ".htmlspecialchars($_GET['subject']).">";
+echo "<input type='submit' value='Add Assignment'>";
+echo "</form>";
 ?>
 	<h2>Groups</h2>
 <div>
@@ -59,7 +64,7 @@ echo "</form>";
 ?>
 
 	<h2>Students</h2>
-	
+
 <?php
 $mysqli = new mysqli("classmysql.engr.oregonstate.edu","cs340_alessanf","vhwfz4pPVJe4rssw","cs340_alessanf");
 echo "<table class='Students'><tr><th> First Name  <th> Last Name </tr>";

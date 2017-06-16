@@ -10,12 +10,12 @@
       <li><a href="enroll.php">Enroll Class</a></li>
       <li><a href="add_group.php">Join Group</a></li>
       <li><a href="Create_Class.php">Create Class</a></li>
-      <li><a href="Create_Group.php">Create Group</a></li>
+      <!--<li><a href="Create_Group.php">Create Group</a></li>-->
       <!--<li><a href="assignment.php">Assignments</a></li>-->
       <li><a href="class.php">Your Classes</a></li>
       <li><a href="group.php">Your Groups</a></li>
       <!--<li><a href="messages.php">Messages</a></li>-->
-      <li><a href="threads.php">Threads</a></li>
+      <li><a href="threads.php">Your Threads</a></li>
 	  <li><a href="logout.php">Log Out</a></li>
     </ul>
   </nav>
