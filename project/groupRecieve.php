@@ -39,5 +39,4 @@ setTimeout(function() {
 	document.getElementById("redir").click();
 },250);
 </script>
->>>>>>> origin/master
 <?php include("footer.php");?>
