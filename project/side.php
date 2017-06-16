@@ -14,7 +14,7 @@
       <li><a href="assignment.php">Assignments</a></li>
       <li><a href="class.php">Classes</a></li>
       <li><a href="group.php">Groups</a></li>
-      <li><a href="messages.php">Messages</a></li>
+      <!--<li><a href="messages.php">Messages</a></li>-->
       <li><a href="threads.php">Threads</a></li>
 	  <li><a href="logout.php">Log Out</a></li>
     </ul>

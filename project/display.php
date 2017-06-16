@@ -39,7 +39,7 @@ echo "</table>";
 </html>
 <?php
 $mysqli = new mysqli("classmysql.engr.oregonstate.edu","cs340_alessanf","vhwfz4pPVJe4rssw","cs340_alessanf");
-echo "<table class='Assignment'><tr><th> Name  <th> Size <th>  GroupID </tr>";
+echo "<table class='Group'><tr><th> Name  <th> Size <th>  GroupID </tr>";
 if ($result = $mysqli->query("SELECT Name,size,GroupID FROM `Group`G,`Class`C WHERE G.CourseID = C.CourseID AND C.subject = '".$_GET["subject"]."'")) {
     while($obj = $result->fetch_object()){
             echo "<tr>";
@@ -48,11 +48,15 @@ if ($result = $mysqli->query("SELECT Name,size,GroupID FROM `Group`G,`Class`C WH
             echo "<td>".htmlspecialchars($obj->GroupID)."</td>";
             echo "</tr>";
     }
-
     $result->close();
 }
 echo "</table>";
+echo "<td><form action='Create_Group.php' method='get'>";
+echo "<input type='hidden' name = 'CourseID' value = ".htmlspecialchars($_GET['CourseID']).">";
+echo "<input type='submit' value='New Group'>";
+echo "</form>";
 ?>
+
 <html>
 	<h2>Students</h2>
 </html>

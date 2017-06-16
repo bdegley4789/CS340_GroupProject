@@ -7,11 +7,16 @@ include("side.php");
 </html>
 <?php
 $mysqli = new mysqli("classmysql.engr.oregonstate.edu","cs340_alessanf","vhwfz4pPVJe4rssw","cs340_alessanf");
-  if ($stmt = $mysqli->prepare("INSERT INTO Group(size,CourseID,ONID,Name) VALUES(?,?,?,?)")) {
+  if ($stmt = $mysqli->prepare("INSERT INTO `Group`(size,CourseID,ONID,Name) VALUES(?,?,?,?)")) {
       $size = $_REQUEST["size"];
       $CourseID = $_REQUEST["CourseID"];
-      $ONID = $_SESSION["ONID"];
+      $ONID = $_SESSION["onidid"];
       $Name = $_REQUEST["Name"];
+
+      echo $size;
+      echo $CourseID;
+      echo $ONID;
+      echo $Name;
 
       /* for five params, pass five character types to bind_param with five values */
       $stmt->bind_param("iiss", $size, $CourseID, $ONID, $Name);
@@ -23,6 +28,6 @@ $mysqli = new mysqli("classmysql.engr.oregonstate.edu","cs340_alessanf","vhwfz4p
   }
 ?>
 
-<h3>View results...<a href=class.php>Groups</a></h3>
+<h3>View results...<a href=group.php>Groups</a></h3>
 
 <?php include("footer.php");?>
