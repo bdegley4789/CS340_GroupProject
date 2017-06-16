@@ -6,11 +6,14 @@ include("side.php");
 	checkAuth(true)
 ?>
 <html>
-  <link rel="stylesheet" type="text/css" href="style.css" />
-  <head>
-    <h1>Groups</h1>
-  </head>
-</html>
+	<head>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>Your Groups</title>
+	</head>
+  <header class='main'>
+    <h1>Your Groups</h1>
+  </header>
+	<div class='main'>
 <?php
 $mysqli = new mysqli("classmysql.engr.oregonstate.edu","cs340_alessanf","vhwfz4pPVJe4rssw","cs340_alessanf");
 echo "<table class='Group'><tr><th> Group Name  <th> Group Number <th> Size <th> Course </tr>";
@@ -28,6 +31,8 @@ if ($result = $mysqli->query("SELECT G.Name, G.GroupID, G.size, C.subject FROM `
 echo "</table>";
 }
 ?>
+</div>
+</html>
 <?php
 include("footer.php");
 ?>

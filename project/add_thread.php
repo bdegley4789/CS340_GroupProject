@@ -7,10 +7,13 @@ include("side.php");
 ?>
 <html>
 	<head>
-		<h1>Create a new thread </h1>
+		<title>Create a new thread</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
 	</head>
-	
-	
+	<header class='main'>
+		<h1>Create a new thread </h1>
+	</header>
+<div class='main'>
 <?php
 	echo "<form action='threadReceive.php' method='post'>";
 	echo "<input type='hidden' name='GroupID' value='".$_REQUEST["GroupID"]."'>";
@@ -24,6 +27,7 @@ include("side.php");
 
 
 ?>
+</div>
 </html>
 <?php
 include("footer.php");

@@ -6,13 +6,15 @@ include("side.php");
 	checkAuth(true)
 ?>
 <html>
-  <link rel="stylesheet" type="text/css" href="style.css" />
-  <head>
+	<head>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>Courses</title>
+	</head>
+  <header class='main'>
     <h1>Current Courses</h1>
-  </head>
-</html>
-<body>
-</div>
+  </header>
+
+<div class='main'>
 <?php
 $mysqli = new mysqli("classmysql.engr.oregonstate.edu","cs340_alessanf","vhwfz4pPVJe4rssw","cs340_alessanf");
 echo "<table class='Name'><tr><th> Name <th> Location</tr>";
@@ -30,8 +32,9 @@ if ($result = $mysqli->query("SELECT C.CourseID, C.subject,C.location FROM `Clas
 echo "</table>";
 }
 ?>
+
 </div>
-</body>
+</html>
 <?php
 include("footer.php");
 ?>

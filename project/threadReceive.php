@@ -6,6 +6,8 @@ include("side.php");
 	checkAuth(true)
 ?>
 <html>
+<link rel="stylesheet" type="text/css" href="style.css">
+<div class='main'>
 <?php
 	$mysqli = new mysqli("classmysql.engr.oregonstate.edu","cs340_alessanf","vhwfz4pPVJe4rssw","cs340_alessanf");
 	$ONID= $_SESSION["onidid"];
@@ -17,6 +19,7 @@ include("side.php");
 	$mysqli->query("INSERT INTO `Messages`(`TopicID`, `ONID`, `Message`, `Time`) VALUES('$used_id', '$ONID', '$message',NOW())");
 	echo "<h3>Insert Successful, redirecting to the <a id='redir' href=\"messages.php?TopicID=$used_id\"> message</a></h3>";
 ?>
+</div>
 </html>
 <script>
 setTimeout(function() {

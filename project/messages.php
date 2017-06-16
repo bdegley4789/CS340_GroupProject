@@ -6,13 +6,15 @@ include("side.php");
 	checkAuth(true)
 ?>
 <html>
-  <link rel="stylesheet" type="text/css" href="style.css" />
-  <head>
+	<head>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>Messages</title>
+	</head>
+	<header class='main'>
     <h1>Messages</h1>
-  </head>
+  </header>
 
-<body>
-<div>
+<div class='main'>
 <?php
 $mysqli = new mysqli("classmysql.engr.oregonstate.edu","cs340_alessanf","vhwfz4pPVJe4rssw","cs340_alessanf");
 $TopicID = $mysqli->real_escape_string($_REQUEST["TopicID"]);
@@ -36,8 +38,8 @@ echo "<input type=submit></form>";
 echo "</div>";
 ?>
 </div>
-</body>
+</html>
 <?php
 include("footer.php");
 ?>
-</html>
+

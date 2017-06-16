@@ -3,8 +3,10 @@ include("header.php");
 include("side.php");
 ?>
 <html>
+<link rel="stylesheet" type="text/css" href="style.css">
+<div class='main'>
     <h3>Saving submission...</h3>
-</html>
+
 <?php
 $mysqli = new mysqli("classmysql.engr.oregonstate.edu","cs340_alessanf","vhwfz4pPVJe4rssw","cs340_alessanf");
 if($mysqli->connect_errno) {
@@ -28,9 +30,14 @@ if($mysqli->connect_errno) {
 ?>
 
 <h3>View results...<a id='redir' href="group.php">Your Groups</a></h3>
+</div>
+</html>
+
+
 <script>
 setTimeout(function() {
 	document.getElementById("redir").click();
 },250);
 </script>
+>>>>>>> origin/master
 <?php include("footer.php");?>

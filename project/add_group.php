@@ -6,12 +6,15 @@ include("side.php");
 	checkAuth(true)
 ?>
 <html>
-  <link rel="stylesheet" type="text/css" href="style.css" />
+  <link rel="stylesheet" type="text/css" href="style.css">
   <head>
-    <h1>Current Courses</h1>
+    <Title>Current Courses</Title>
   </head>
+  <header class='main'>
+	<h1>Current Courses</h1>
+  </header>
   <script src="add_group.js"></script>
-<body>
+<div class='main'>
 <div>
 	<input type="radio" name="show" id="all" value="all">
 	<label for"all">Show all </label>
@@ -47,7 +50,7 @@ if ($result = $mysqli->query("SELECT G.Name,G.GroupID,G.size,C.subject FROM `Cla
 }
 echo "</table>";
 ?>
-</body>
+</div>
 </html>
 <?php
 include("footer.php");
