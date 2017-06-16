@@ -26,6 +26,7 @@ include("side.php");
 </div>
 <?php
 $mysqli = new mysqli("classmysql.engr.oregonstate.edu","cs340_alessanf","vhwfz4pPVJe4rssw","cs340_alessanf");
+//displaying the groups
 echo "<table id='Group' class='Group'><thead><tr><th> Group Name  <th> Group Number <th> Current Size <th> Max Size <th> Course <th> Join </tr></thead>";
 if ($result = $mysqli->query("SELECT G.Name,G.GroupID,G.size,C.subject FROM `Class`C, `Group`G WHERE C.CourseID = G.CourseID AND C.CourseID in (SELECT CourseID FROM TakingClass WHERE ONID='".$_SESSION["onidid"]."')")) {
 	echo "<tbody>";
@@ -33,6 +34,7 @@ if ($result = $mysqli->query("SELECT G.Name,G.GroupID,G.size,C.subject FROM `Cla
             echo "<tr>";
             echo "<td>".htmlspecialchars($obj->Name)."</td>";
             echo "<td>".htmlspecialchars($obj->GroupID)."</td>";
+						//displaying the current size of the group
 						if ($current = $mysqli->query("SELECT COUNT(GroupID) g FROM `GroupMember` WHERE GroupID = ".htmlspecialchars($obj->GroupID)."")) {
 							while($temp = $current->fetch_object()){
 								echo "<td>".htmlspecialchars($temp->g)."</td>";
@@ -40,6 +42,7 @@ if ($result = $mysqli->query("SELECT G.Name,G.GroupID,G.size,C.subject FROM `Cla
 						}
             echo "<td>".htmlspecialchars($obj->size)."</td>";
 						echo "<td>".htmlspecialchars($obj->subject)."</td>";
+						//creating a form to join the group
 						echo "<td><form action='groupRecieve.php'>";
 						echo "<input type='hidden' name = 'GroupID' value = ".htmlspecialchars($obj->GroupID).">";
 						echo "<input type='submit' value='Submit'>";
