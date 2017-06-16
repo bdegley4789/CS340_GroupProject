@@ -17,7 +17,6 @@ include("side.php");
 </html>
 <html>
 	<h2>Assignments</h2>
-</html>
 <?php
 $mysqli = new mysqli("classmysql.engr.oregonstate.edu","cs340_alessanf","vhwfz4pPVJe4rssw","cs340_alessanf");
 echo "<table class='Assignment'><tr><th> Name  <th> Description <th>  Due Date </tr>";
@@ -34,32 +33,33 @@ if ($result = $mysqli->query("SELECT Name,Description,DueDate FROM `Assignment`A
 }
 echo "</table>";
 ?>
-<html>
 	<h2>Groups</h2>
-</html>
+<div>
 <?php
 $mysqli = new mysqli("classmysql.engr.oregonstate.edu","cs340_alessanf","vhwfz4pPVJe4rssw","cs340_alessanf");
-echo "<table class='Group'><tr><th> Name  <th> Size <th>  GroupID </tr>";
+echo "<table id='Group'><tr><th> Name  <th> Size <th>  GroupID </tr>";
 if ($result = $mysqli->query("SELECT Name,size,GroupID FROM `Group`G,`Class`C WHERE G.CourseID = C.CourseID AND C.subject = '".$_GET["subject"]."'")) {
+	echo "<tbody>";
     while($obj = $result->fetch_object()){
-            echo "<tr>";
+            echo "<tr class='Groupshown'>";
 						echo "<td>"."<a href=\"./displayGroup.php?Name=$obj->Name&GroupID=$obj->GroupID\">$obj->Name</a>"."</td>";
             echo "<td>".htmlspecialchars($obj->size)."</td>";
             echo "<td>".htmlspecialchars($obj->GroupID)."</td>";
             echo "</tr>";
     }
     $result->close();
+	echo "</tbody>";
 }
 echo "</table>";
+echo "</div>";
 echo "<td><form action='Create_Group.php' method='get'>";
 echo "<input type='hidden' name = 'CourseID' value = ".htmlspecialchars($_GET['CourseID']).">";
 echo "<input type='submit' value='New Group'>";
 echo "</form>";
 ?>
 
-<html>
 	<h2>Students</h2>
-</html>
+	
 <?php
 $mysqli = new mysqli("classmysql.engr.oregonstate.edu","cs340_alessanf","vhwfz4pPVJe4rssw","cs340_alessanf");
 echo "<table class='Students'><tr><th> First Name  <th> Last Name </tr>";
@@ -75,6 +75,7 @@ if ($result = $mysqli->query("SELECT firstName,lastName FROM `Students`S,`Taking
 }
 echo "</table>";
 ?>
+</html>
 <?php
 include("footer.php");
 ?>

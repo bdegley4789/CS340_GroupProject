@@ -15,7 +15,7 @@ include("side.php");
 	$mysqli->query("INSERT INTO `Threads`(`title`, `GroupID`, `ONID`) VALUES('".$threadname."','".$GroupID."','".$ONID."')");
 	$used_id = $mysqli->insert_id;
 	$mysqli->query("INSERT INTO `Messages`(`TopicID`, `ONID`, `Message`, `Time`) VALUES('$used_id', '$ONID', '$message',NOW())");
-	echo "<h3>Insert Successful, redirecting to the <a href=\"messages.php?TopicID=$used_id\"> message</a></h3>";
+	echo "<h3>Insert Successful, redirecting to the <a id='redir' href=\"messages.php?TopicID=$used_id\"> message</a></h3>";
 ?>
 </html>
 <script>
