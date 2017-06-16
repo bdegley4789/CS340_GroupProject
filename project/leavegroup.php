@@ -12,11 +12,16 @@ include("side.php");
 	#echo $ONID;
 	#echo $GroupID;
 	$mysqli->query("DELETE FROM `GroupMember` WHERE ONID='".$ONID."' AND GroupID='".$GroupID."'");
-	
+
 	echo "<html>";
-	echo "<a href=\"displayGroup.php?Name=".$_REQUEST['Name']."&GroupID=".$_REQUEST['GroupID']."\">Click here to return</a>";
+	echo "<a id='redir' href=\"displayGroup.php?Name=".$_REQUEST['Name']."&GroupID=".$_REQUEST['GroupID']."\">Click here to return</a>";
 	echo "</html>";
 
 ?>
+<script>
+setTimeout(function() {
+	document.getElementById("redir").click();
+},250);
+</script>
 
 <?php include("footer.php");?>
