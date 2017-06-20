@@ -7,13 +7,13 @@
 </html>
 
 <?php
-include("static/php/_db_header.php");
 session_start();
 //if (session_start() == True){
 //	echo "Session was successfully started";
 //}
 
 function add_to_database() {
+	$db = new mysqli("classmysql.engr.oregonstate.edu","cs340_alessanf","vhwfz4pPVJe4rssw","cs340_alessanf");
 	$id = $_SESSION['onidid'];
 	$fn = $db->escape_string($_SESSION['firstname']);
 	$ln = $db->escape_string($_SESSION['lastname']);
@@ -64,5 +64,4 @@ function checkAuth($doRedirect) {
 	}
 	return "";
 }
-include("static/php/_db_footer.php");
 ?>
